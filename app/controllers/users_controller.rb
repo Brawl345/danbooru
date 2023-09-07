@@ -3,6 +3,8 @@
 class UsersController < ApplicationController
   respond_to :html, :xml, :json
 
+  before_action :disable_registration, only: [:create]
+
   around_action :set_timeout, only: [:profile, :show]
 
   rate_limit :create, rate: 1.0/5.minutes, burst: 10
@@ -140,6 +142,16 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def disable_registration
+    if Danbooru.config.disable_registration?.to_s.truthy?
+      respond_to do |format|
+        format.html { render plain: "Registration is disabled.", status: 403 }
+        format.json { render json: { error: "Registration is disabled." }, status: 403 }
+        format.xml  { render xml:  { error: "Registration is disabled." }, status: 403 }
+      end
+    end
+  end
 
   def set_timeout
     PostVersion.connection.execute("SET statement_timeout = #{CurrentUser.user.statement_timeout}")
