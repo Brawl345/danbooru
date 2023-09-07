@@ -517,6 +517,11 @@ module Danbooru
       true
     end
 
+    # Whether to disable the registration.
+    def disable_registration?
+      false
+    end
+
     # The URL of the Shopify checkout page where account upgrades are sold.
     def shopify_checkout_url
     end
