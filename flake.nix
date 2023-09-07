@@ -78,7 +78,7 @@
               (vips_8_14_2 pkgs)
               (exiftool_12_50 pkgs)
               pkgs.postgresql_15
-              pkgs.sonargraph
+              pkgs.solargraph
             ];
             shellHook = ''
             '';
