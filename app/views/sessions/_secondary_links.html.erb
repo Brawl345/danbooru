@@ -1,3 +1,5 @@
 <% content_for(:secondary_links) do %>
-  <%= subnav_link_to "Sign up", new_user_path %>
+  <% if Danbooru.config.disable_registration?.to_s.falsy? %>
+    <%= subnav_link_to "Sign up", new_user_path %>
+  <% end %>
 <% end %>
