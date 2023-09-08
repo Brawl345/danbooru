@@ -522,6 +522,11 @@ module Danbooru
       false
     end
 
+    # Whether to enable "private mode"
+    def private_mode?
+      false
+    end
+
     # The URL of the Shopify checkout page where account upgrades are sold.
     def shopify_checkout_url
     end

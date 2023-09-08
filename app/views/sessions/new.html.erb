@@ -12,7 +12,8 @@
       <%= simple_form_for(:session, url: session_path) do |f| %>
         <%= f.input :url, as: :hidden, input_html: { value: params[:url] } %>
         <%= f.input :name, input_html: { autocapitalize: "none" } %>
-        <%= f.input :password, hint: link_to("Forgot password?", password_reset_path), input_html: { autocomplete: "password" } %>
+        <%= f.input :password, input_html: { autocomplete: "password" } %>
+        <%= link_to("Forgot password?", password_reset_path) unless Danbooru.config.private_mode?.to_s.truthy? %>
         <%= f.submit "Login" %>
       <% end %>
 

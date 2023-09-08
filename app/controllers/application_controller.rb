@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   before_action :add_headers
   before_action :cause_error
   before_action :redirect_if_name_invalid?
+  before_action :handle_private_mode?
   after_action :skip_session_if_publicly_cached
   after_action :reset_current_user
   layout "default"
@@ -239,6 +240,20 @@ class ApplicationController < ActionController::Base
     if request.format.html? && !CurrentUser.user.is_anonymous? && CurrentUser.user.name_invalid?
       flash[:notice] = "You must change your username to continue using #{Danbooru.config.app_name}"
       redirect_to change_name_user_path(CurrentUser.user)
+    end
+  end
+
+  def public_page?
+    params[:controller] == 'static' ||
+    params[:controller] == 'sessions' ||
+     (params[:controller] == 'users' && params[:action] == 'new') ||
+     (params[:controller] == 'users' && params[:action] == 'create')
+  end
+
+  def handle_private_mode?
+    if  CurrentUser.user.is_anonymous? && !public_page?
+      flash[:notice] = "You must be logged in to view #{Danbooru.config.app_name}"
+      redirect_to login_path(url: request.fullpath)
     end
   end
 
