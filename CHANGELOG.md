@@ -3,6 +3,7 @@
 ### Changes
 * "Posts per page" uses an input field instead of a huge combobox
 * Added config for disabling the registration
+* Added config for enabling a "private mode" that enforces login for the whole page excluding static sites. Password reset is also hidden because it leaks user names.
 
 ## 2021-03-31
 
