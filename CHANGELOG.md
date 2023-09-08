@@ -1,3 +1,9 @@
+## "Forkbooru" by Brawl345
+
+### Changes
+* "Posts per page" uses an input field instead of a huge combobox
+* Added config for disabling the registration
+
 ## 2021-03-31
 
 ### Changes
