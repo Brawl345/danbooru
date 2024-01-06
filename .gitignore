@@ -13,6 +13,7 @@ public/data/
 public/packs-test/
 public/packs/
 /vendor/
+.direnv/
 
 # https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
 .yarn/*
