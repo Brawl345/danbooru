@@ -11,5 +11,6 @@
 1. Copy `.env` to `.env.development`/`.env.production` and edit the `DATABASE_URL`
 2. Copy `config/danbooru_default_config.rb` to `config/danbooru_locaLl_config.rb` and edit it
 3. Run `bin/rails db:create db:migrate db:seed` to initialize the database
-4. Run `rails server` 
-5. Done!
+4. Run `yarn install`
+5. Run `rails server` 
+6. Done!
